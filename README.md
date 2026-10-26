@@ -1,36 +1,36 @@
-# Pokédex Angular
+# PokeDex en Deno Deploy
 
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
-[![codecov](https://codecov.io/gh/keilermora/pokedex-angular/branch/master/graph/badge.svg?token=9E0D28IOFT)](https://codecov.io/gh/keilermora/pokedex-angular)
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+Despliegue de la aplicación **PokeDex** (hecha en Angular) en una nube pública, para Pueblo Paleta Inc.
 
-[https://keilermora.github.io/pokedex-angular/](https://keilermora.github.io/pokedex-angular/)
+- **Autor:** Doimer Herrera (usuario de GitHub: `doimerh`)
+- **Nube usada:** Deno Deploy (https://console.deno.com)
+- **Aplicación en línea:** https://pokedex.doimerh.deno.net
+- **Calificación en securityheaders.com:** A+
 
-La aplicación muestra el listado y el detalle de los Pokémon de las primeras 3 generaciones.
+El proceso de despliegue está explicado en [Despliegue.md](Despliegue.md).
 
-La imagen que representa un Pokémon en el listado muestra las variaciones que estos tuvieron durante las primeras versiones, desde la versión Green (1996) hasta la version Emerald (2005).
+## ¿Por qué Deno Deploy?
 
-Los detalles de un Pokémon individual muestra sus estadísticas base y los registros de la Pokédex de las diferentes versiones.
+Era una de las opciones permitidas y me pareció la más sencilla: tiene plan gratuito (me registré con GitHub, sin pagar), se conecta directo con GitHub, da HTTPS automático y permite correr un pequeño servidor propio (lo necesité para los encabezados de seguridad).
 
-El proyecto fue desarrollado usando la librería de JavaScript [Angular](https://angular.io/) para crear la interfaz de usuario, en comunicación con la Api RESTful [PokéAPI](https://pokeapi.co/).
+## Cómo crear la cuenta, paso a paso
 
-## Requisitos mínimos
+Deno Deploy no tiene registro con correo y contraseña. Se entra con una cuenta de GitHub o de Google, así que primero hay que tener cuenta de GitHub. Yo usé la mía (`doimerh`).
 
-- [Nodejs](https://nodejs.org) con soporte de largo plazo (LTS).
-- Un navegador web
+**1. Abrir la consola.** Entrar a https://console.deno.com. Aparece la pantalla "Iniciar sesión". Si no hay cuenta, Deno la crea sola la primera vez.
 
-## Ambiente de pruebas
+> En Google Chrome la verificación de Cloudflare falló ("La verificación falló") y no me dejó entrar con ningún botón. Lo solucioné entrando desde **Microsoft Edge**.
 
-Ejecutar en la raíz del proyecto:
+**2. Iniciar sesión con GitHub.** Esperar a que la verificación de Cloudflare quede en verde y hacer clic en "Iniciar sesión con GitHub".
 
-```
-npm start
-```
+**3. Autorizar a Deno Deploy.** GitHub muestra una pantalla de permisos. En este paso solo pide verificar mi identidad y ver mi correo. Hice clic en **Authorize**.
 
-## Referencias
+**4. Crear la organización.** Deno Deploy agrupa las aplicaciones dentro de una organización. Usé `doimerh` como nombre y como *slug* (el identificador que queda en la dirección de la app).
 
-- [Angular](https://angular.io/): One framework.
-- [Angular Folder Structure](https://angular-folder-structure.readthedocs.io/en/latest/): Create a skeleton structure which is flexible for projects big or small.
-- [Font Awesome](https://fontawesome.com/): The web's most popular icon set and toolkit.
-- [Normalize.css](https://necolas.github.io/normalize.css/): A modern, HTML5-ready alternative to CSS resets.
-- [PokéAPI](https://pokeapi.co/): The RESTful Pokémon API.
+**5. Panel principal.** Al terminar aparece el panel de la organización (`console.deno.com/doimerh`) con el mensaje "No applications yet" y el botón **+ New app**. El aviso azul de "organización no verificada" solo indica límites de uso básicos; no hizo falta verificarla.
+
+**6. Conectar GitHub con Deno.** Al crear una app, el selector de repositorios decía "No results found", porque Deno todavía no podía ver mis repositorios. Hice clic en **+ Add a GitHub account**, elegí la opción **Only select repositories** y seleccioné solo el repositorio `pokedex`, para que Deno no vea el resto de mis proyectos. Después de instalar, el selector ya mostraba `doimerh/pokedex`.
+
+## Resultado
+
+Cuenta de Deno Deploy creada con GitHub, organización `doimerh` y Deno con acceso únicamente al repositorio `pokedex`. Lo que sigue (crear la app, compilar y publicar) está en [Despliegue.md](Despliegue.md).
